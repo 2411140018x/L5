@@ -1,0 +1,24 @@
+<h1>つぶやきアプリ</h1>
+
+<% flash.each do |type, msg| %>
+  <p style="color: red;"><%= msg %></p>
+<% end %>
+
+<% if session[:login_uid] %>
+  <p><%= session[:login_uid] %> でログイン中　<%= link_to "ログアウト", top_logout_path %></p>
+  <%= form_with model: @tweet do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "ツイート" %>
+  <% end %>
+<% else %>
+  <%= render "login_form" %>
+<% end %>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li>
+      <%= tweet.user.uid %>：<%= tweet.message %>
+      <%= link_to "削除", tweet_path(tweet), data: { turbo_method: :delete } %>
+    </li>
+  <% end %>
+</ul>
