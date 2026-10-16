@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tweets, only: [:index, :create, :destroy]
   resources :users
   root "users#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

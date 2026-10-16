@@ -1,0 +1,15 @@
+<h1>ツイート一覧</h1>
+
+<%= form_with model: @tweet do |f| %>
+  <%= f.text_field :message %>
+  <%= f.submit "ツイート" %>
+<% end %>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li>
+        <%= tweet.user.uid %>：<%= tweet.message %>
+        <%= link_to "削除", tweet_path(tweet), data: { turbo_method: :delete } %>
+    </li>
+  <% end %>
+</ul>
