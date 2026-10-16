@@ -1,0 +1,12 @@
+<h1>ユーザ一覧</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+        <%= user.uid %>（<%= user.age %>歳）
+        <%= link_to "削除", user_path(user), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "新規登録", new_user_path %>
