@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resource :profile, only: [:new, :create, :edit, :update]
   root "top#main"
   post "top/login"
   get "top/logout"

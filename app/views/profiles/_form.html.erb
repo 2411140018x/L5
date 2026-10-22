@@ -1,0 +1,11 @@
+<% @profile.errors.full_messages.each do |msg| %>
+  <p style="color: red;"><%= msg %></p>
+<% end %>
+
+<%= form_with model: @profile, url: profile_path do |f| %>
+  <%= f.label :message, "自己紹介" %><br>
+  <%= f.text_area :message %><br>
+  <%= f.submit "保存" %>
+<% end %>
+
+<%= link_to "戻る", root_path %>
