@@ -1,17 +1,15 @@
 <h1>つぶやきアプリ</h1>
 
-<p>
-  <%= session[:login_uid] %> でログイン中
-  <%= link_to "プロフィール", current_user.profile ? edit_profile_path : new_profile_path %>
-  <%= link_to "ログアウト", top_logout_path %>
-</p>
-
 <% flash.each do |type, msg| %>
   <p style="color: red;"><%= msg %></p>
 <% end %>
 
-<% if session[:login_uid] %>
-  <p><%= session[:login_uid] %> でログイン中　<%= link_to "ログアウト", top_logout_path %></p>
+<% if current_user %>
+  <p>
+    <%= session[:login_uid] %> でログイン中
+    <%= link_to "プロフィール", current_user.profile ? edit_profile_path : new_profile_path %>
+    <%= link_to "ログアウト", top_logout_path %>
+  </p>
   <%= form_with model: @tweet do |f| %>
     <%= f.text_field :message %>
     <%= f.submit "ツイート" %>
