@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(
       uid: params[:user][:uid],
-      pass: BCrypt::Password.create(params[:user][:pass]),
+      password: params[:user][:password],
+      password_confirmation: params[:user][:password_confirmation],
       age: params[:user][:age]
     )
     if @user.save

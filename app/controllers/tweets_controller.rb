@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    user = User.find_by(uid: session[:login_uid])
+    user = current_user
     if user.nil?
       redirect_to root_path, alert: "ログインしてください"
       return

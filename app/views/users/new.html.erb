@@ -6,9 +6,13 @@
     <%= f.text_field :uid %>
   </div>
   <div>
-    <%= f.label :pass, "パスワード" %>
-    <%= f.password_field :pass %>
-  </div>
+  <%= f.label :password, "パスワード" %>
+  <%= f.text_field :password %>
+</div>
+<div>
+  <%= f.label :password_confirmation, "パスワード（確認）" %>
+  <%= f.text_field :password_confirmation %>
+</div>
   <div>
     <%= f.label :age, "年齢" %>
     <%= f.number_field :age %>
